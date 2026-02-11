@@ -3,39 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Línea de Tiempo</title>
+    <title>Línea de Tiempo - Textiles del Futuro S.A.</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 40px 20px;
+            background: var(--bg-gradient);
             min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.6;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        h1 {
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        header {
             text-align: center;
-            color: white;
-            margin-bottom: 50px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 60px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
+
+        header h1 { color: var(--primary); font-size: 2.2em; margin-bottom: 10px; }
+        header h2 { color: var(--secondary); font-size: 1.2em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        header p { color: #666; margin-top: 10px; font-style: italic; }
+
+        .timeline { position: relative; padding: 20px 0; }
         
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        
+        /* Línea central */
         .timeline::before {
             content: '';
             position: absolute;
@@ -43,126 +48,207 @@
             transform: translateX(-50%);
             width: 4px;
             height: 100%;
-            background: rgba(255,255,255,0.3);
+            background: var(--primary);
             border-radius: 2px;
         }
+
+        .timeline-item { margin-bottom: 60px; position: relative; width: 100%; }
         
-        .timeline-item {
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .timeline-item:nth-child(odd) .content {
-            margin-left: 0;
-            margin-right: auto;
-            width: 45%;
-            text-align: right;
-        }
-        
-        .timeline-item:nth-child(even) .content {
-            margin-left: auto;
-            margin-right: 0;
-            width: 45%;
-            text-align: left;
-        }
-        
-        .content {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-        
-        .timeline-item::before {
-            content: '';
+        .timeline-item::after { content: ''; display: table; clear: both; }
+
+        /* Punto en la línea */
+        .timeline-dot {
             position: absolute;
             left: 50%;
-            top: 30px;
+            top: 25px;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 4px solid #667eea;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary);
+            border: 4px solid white;
             border-radius: 50%;
-            z-index: 1;
+            z-index: 2;
+            box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.2);
         }
-        
+
+        .content {
+            width: 45%;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--accent);
+        }
+
+        .content:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+
+        .timeline-item:nth-child(odd) .content { float: left; text-align: right; border-left: none; border-right: 5px solid var(--accent); }
+        .timeline-item:nth-child(even) .content { float: right; text-align: left; }
+
         .date {
-            font-size: 1.2em;
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
             font-weight: bold;
-            color: #667eea;
+            font-size: 0.9em;
             margin-bottom: 10px;
         }
-        
-        .title {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
+
+        .norm { font-size: 1.3em; font-weight: 800; color: #2c3e50; margin-bottom: 8px; display: block; }
+
+        .description { font-size: 0.95em; color: #555; margin-bottom: 15px; }
+
+        .impact-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            text-align: left;
         }
-        
-        .description {
-            color: #666;
-            line-height: 1.6;
+
+        .impact-box strong { color: var(--secondary); display: block; margin-bottom: 5px; }
+
+        .reflection-section {
+            background: white;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
+
+        .reflection-section h3 { color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; margin-bottom: 20px; }
+
         @media (max-width: 768px) {
-            .timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-item::before {
-                left: 30px;
-            }
-            
-            .timeline-item:nth-child(odd) .content,
+            .timeline::before { left: 20px; }
+            .timeline-dot { left: 20px; }
+            .timeline-item:nth-child(odd) .content, 
             .timeline-item:nth-child(even) .content {
-                margin-left: 80px;
-                margin-right: 0;
-                width: auto;
+                width: 85%;
+                float: right;
                 text-align: left;
-            }
-            
-            h1 {
-                font-size: 1.8em;
+                border-right: none;
+                border-left: 5px solid var(--accent);
+                margin-left: 50px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Mi Línea de Tiempo</h1>
-        
+        <header>
+            <h2>Caso Práctico Unidad 2</h2>
+            <h1>Evolución Normativa: Jornada Laboral en Colombia</h1>
+            <p>Análisis aplicado al caso "Textiles del Futuro S.A."</p>
+        </header>
+
         <div class="timeline">
             <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="content">
-                    <div class="date">2024</div>
-                    <div class="title">Primer Evento</div>
-                    <div class="description">Aquí puedes añadir la descripción del primer evento importante en tu vida o proyecto.</div>
+                    <span class="date">28 de Diciembre de 1990</span>
+                    <span class="norm">Ley 50 de 1990</span>
+                    <div class="description">
+                        Reforma estructural al Código Sustantivo del Trabajo. Introduce la flexibilización laboral y nuevos esquemas de turnos.
+                    </div>
+                    <div class="impact-box">
+                        <strong>⚖️ Impacto Jurídico:</strong>
+                        Estableció las bases para la operatividad continua (turnos sucesivos) que usa "Textiles del Futuro", pero también creó las figuras que hoy generan confusión sobre la jornada máxima.
+                    </div>
                 </div>
             </div>
-            
+
             <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="content">
-                    <div class="date">2025</div>
-                    <div class="title">Segundo Evento</div>
-                    <div class="description">Describe el segundo evento con sus detalles relevantes y el impacto que tuvo.</div>
+                    <span class="date">27 de Diciembre de 2002</span>
+                    <span class="norm">Ley 789 de 2002</span>
+                    <div class="description">
+                        Extendió la jornada diurna hasta las 10:00 p.m. y redujo recargos dominicales/festivos del 100% al 75%.
+                    </div>
+                    <div class="impact-box">
+                        <strong>🏭 Relación con el Caso:</strong>
+                        Esta norma (ya derogada en parte) explica por qué muchas empresas textileras se acostumbraron a no pagar recargos nocturnos antes de las 10 p.m., una práctica que "Textiles del Futuro" podría estar aplicando erróneamente hoy.
+                    </div>
                 </div>
             </div>
-            
+
             <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="content">
-                    <div class="date">2026</div>
-                    <div class="title">Tercer Evento</div>
-                    <div class="description">Sigue añadiendo más eventos para crear una narativa completa de tu historia.</div>
+                    <span class="date">18 de Julio de 2017</span>
+                    <span class="norm">Ley 1846 de 2017</span>
+                    <div class="description">
+                        Modificó el art. 160 del CST. Restableció el recargo nocturno desde las 9:00 p.m. (antes era desde las 10 p.m.).
+                    </div>
+                    <div class="impact-box">
+                        <strong>⚠️ Alerta para Textiles del Futuro:</strong>
+                        Si la empresa tiene turnos rotativos 24h, está obligada a pagar el recargo del 35% desde las 9:00 p.m. El incumplimiento de esto es una de las "divergencias legales" mencionadas en el caso.
+                    </div>
                 </div>
             </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="content">
+                    <span class="date">15 de Julio de 2021</span>
+                    <span class="norm">Ley 2101 de 2021</span>
+                    <div class="description">
+                        Ordena la reducción gradual de la jornada laboral de 48 a 42 horas semanales sin reducción salarial.
+                    </div>
+                    <div class="impact-box">
+                        <strong>📉 Aplicación Directa:</strong>
+                        Las "jornadas excesivas" reportadas por los trabajadores violan directamente esta ley, que ya exige una reducción (46 horas para 2024/25). La empresa no puede mantener el esquema antiguo de 48h sin generar horas extras automáticas.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="content">
+                    <span class="date">6 de Enero de 2022</span>
+                    <span class="norm">Ley 2191 de 2022</span>
+                    <div class="description">
+                        Ley de Desconexión Laboral. Garantiza el derecho a no ser contactado fuera de la jornada laboral.
+                    </div>
+                    <div class="impact-box">
+                        <strong>🛑 Derecho al Descanso:</strong>
+                        El caso menciona que "no se respetan los descansos diarios y semanales". Esta ley blinda ese tiempo, prohibiendo requerimientos administrativos o de producción en tiempo libre.
+                    </div>
+                </div>
+            </div>
+
+             <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="content">
+                    <span class="date">22 de Abril de 2025</span>
+                    <span class="norm">Sentencia T-132 de 2025</span>
+                    <div class="description">
+                        Jurisprudencia (Corte Constitucional) sobre Subordinación Digital y grupos de mensajería como prueba de contrato realidad.
+                    </div>
+                    <div class="impact-box">
+                        <strong>⚖️ Precedente Clave:</strong>
+                        Fundamental para los contratistas de prestación de servicios en Textiles del Futuro. Si reciben órdenes constantes (subordinación), se configura el Contrato Realidad, obligando al pago de todas las prestaciones dejadas de percibir.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reflection-section">
+            <h3>Reflexión: Impacto Normativo en "Textiles del Futuro S.A."</h3>
+            <p>
+                La evolución normativa expuesta demuestra que las prácticas de <strong>Textiles del Futuro S.A.</strong> se encuentran en una situación de <em>ilegalidad flagrante</em> frente al marco jurídico actual. Mientras la empresa intenta justificar sus fallas en "fluctuaciones del mercado", la normativa colombiana ha avanzado hacia un modelo proteccionista (principio de favorabilidad).
+            </p>
+            <br>
+            <p>
+                Específicamente, la falta de pago de recargos nocturnos desde las 9:00 p.m. (Ley 1846/2017) y el exceso de horas trabajadas sin respetar la reducción gradual (Ley 2101/2021) exponen a la empresa a sanciones masivas por parte del Ministerio del Trabajo. Además, la jurisprudencia reciente (como la T-132 mencionada) facilita que los jueces declaren la existencia de un <strong>Contrato Realidad</strong>, transformando los contratos de prestación de servicios en laborales, con el consecuente impacto económico retroactivo por cesantías, primas y seguridad social no pagada.
+            </p>
+            <br>
+            <small>Referencias: Ley 50/1990, Ley 789/2002, Ley 1846/2017, Ley 2101/2021, Ley 2191/2022, Sentencia T-132/2025.</small>
         </div>
     </div>
 </body>
