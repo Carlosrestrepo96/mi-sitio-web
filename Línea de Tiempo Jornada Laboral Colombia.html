@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea de Tiempo - Evolución Jornada Laboral en Colombia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .content {
+            margin-left: 0;
+            margin-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .content {
+            margin-left: 50%;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .date {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .norm {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .impact {
+            font-size: 0.9em;
+            background: #f0f4ff;
+            padding: 10px;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+            color: #555;
+        }
+
+        .impact strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item::before {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .content,
+            .timeline-item:nth-child(even) .content {
+                margin-left: 80px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        .legend {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+        }
+
+        .source {
+            margin-top: 30px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏢 Evolución Normativa de la Jornada Laboral en Colombia</h1>
+            <p>Hitos jurídicos y cambios fundamentales (1990-2023)</p>
+        </header>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="content">
+                    <div class="date">9 de julio de 1990</div>
+                    <div class="norm">Ley 50 de 1990</div>
+                    <div class="description">
+                        Reforma fundamental del Código Sustantivo del Trabajo. Establece que la duración máxima legal de la jornada ordinaria de trabajo es de 8 horas diarias y 48 horas semanales.
+                    </div>
+                    <div class="impact">
+                        <strong>✓ Impacto:</strong>
+                        Consolidación de la jornada de 8 horas como estándar legal en Colombia. Protección de menores de edad con jornadas reducidas. Establece excepciones para trabajos insalubres o peligrosos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content">
+                    <div class="date">Décadas de 1990-2000</div>
+                    <div class="norm">Jurisprudencia de la Corte Suprema de Justicia</div>
+                    <div class="description">
+                        A través de sentencias como la 13412 (2000) y 22456 (2004), se definen criterios sobre distribución de jornada, descansos no descontables, y cálculo de horas extras. Se establece que los descansos dentro de la jornada no pueden ser descontados del tiempo remunerado.
+                    </div>
+                    <div class="impact">
+                        <strong>✓ Impacto:</strong>
+                        Protección del derecho al descanso dentro la jornada. Claridad sobre qué tiempos se remunera cuando no se presta servicio. Base para futuras demandas por jornadas excesivas.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content">
+                    <div class="date">2008-2012</div>
+                    <div class="norm">Sentencias de la Corte Constitucional</div>
+                    <div class="description">
+                        La Corte Constitucional consolida jurisprudencia declarando que la jornada laboral es un derecho fundamental conexo con la dignidad humana. Sentencias como C-520/2008 y otras establecen que las jornadas permanentes, indefinidas e ininterrumpidas vulneran la dignidad del trabajador. Se reconoce el derecho al descanso y tiempo libre como derecho humano laboral.
+                    </div>
+                    <div class="impact">
+                        <strong>✓ Impacto:</strong>
+                        Elevación de la protección: la jornada laboral adquiere categoría de derecho fundamental. Limitación de jornadas nocturnas permanentes. Base constitucional para proteger trabajadores con vulnerabilidades.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content">
+                    <div class="date">14 de diciembre de 2010</div>
+                    <div class="norm">Ley 1429 de 2010 - Ley de Formalización</div>
+                    <div class="description">
+                        Reforma para promoción de empleo. Aunque principalmente tributaria, incluye disposiciones sobre progresividad de aportes parafiscales. Establece derechos para trabajadores desde el inicio de su relación laboral, incluyendo protección en jornadas de empresas nuevas.
+                    </div>
+                    <div class="impact">
+                        <strong>✓ Impacto:</strong>
+                        Inclusión de trabajadores de microempresas en protección de jornada. Reconocimiento de derechos desde el inicio del vínculo laboral. Intención de reducir precarización en empresas formales.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content">
+                    <div class="date">Abril de 2013</div>
+                    <div class="norm">Decreto 723 de 2013</div>
+                    <div class="description">
+                        Reglamenta la afiliación de contratistas independientes al Sistema General de Riesgos Laborales. Define formalmente el contrato de prestación de servicios y su relación con protecciones laborales. Amplía cobertura de protección a trabajadores independientes de alto riesgo y contratistas.
+                    </div>
+                    <div class="impact">
+                        <strong>✓ Impacto:</strong>
+                        Reconocimiento que trabajadores en esquemas de prestación de servicios requieren protección. Extensión de seguridad social a nuevas modalidades. Impacto indirecto en jornadas al exigir control de tiempo.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="content">
+                    <div class="date">2023-Presente</div>
+                    <div class="norm">Sentencia C-331/23 y C-507/23 - Derecho al desconexión</div>
+                    <div class="description">
+                        La Corte Constitucional reconoce expresamente el derecho a la desconexión digital como parte del derecho al descanso y tiempo libre. Determina que en la era digital, la jornada laboral debe incluir protección contra contacto permanente e ininterrumpido en herramientas de comunicación.
+                    </div>
+                    <div class="impact">
+                        <strong>✓ Impacto:</strong>
+                        Ampliación moderna de protección: la jornada ahora incluye protección contra disponibilidad permanente. Reconocimiento que la tecnología extiende conceptualmente la jornada. Nueva frontera en derechos laborales post-pandemia.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <p><strong>Nota metodológica:</strong> Esta línea de tiempo sintetiza hitos normativos clave seleccionados desde 1990 hasta 2023, incluyendo leyes principales, reformas substantivas y sentencias constitucionales que han definido la protección de la jornada laboral en Colombia.</p>
+        </div>
+
+        <div class="source">
+            <p><strong>Fuentes consultadas:</strong></p>
+            <p>Ley 50 de 1990; Decreto 2351 de 1965; Sentencias Corte Suprema de Justicia (2000, 2004); Jurisprudencia Corte Constitucional (C-520/2008, C-331/23, C-507/23); Ley 1429 de 2010; Decreto 723 de 2013; Código Sustantivo del Trabajo.</p>
+        </div>
+    </div>
+</body>
+</html>
